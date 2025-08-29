@@ -1,0 +1,14 @@
+global using AutoMapper;
+global using FluentValidation;
+global using MediatR;
+global using Microsoft.AspNetCore.Http;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.Extensions.Logging;
+global using Rs.Application.Abstractions.Messaging;
+global using Rs.Application.Common.Interfaces;
+global using Rs.Domain.Aggregates.Auths;
+global using Rs.Domain.Common.Interfaces;
+global using Rs.Domain.Options;
+global using Rs.Domain.Shared;
+global using Rs.Domain.Shared.Enums.Requests;
+global using Rs.Utility;
