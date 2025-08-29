@@ -5,6 +5,11 @@ public class Pet: BaseAuditableEntity
     private static readonly List<VaccinationRecord> _vaccinations = [];
     private static readonly List<MedicalRecord> _medicalHistory = [];
     private static readonly List<ActivityRecord> _activities = [];
+
+    public Pet()
+    {
+        
+    }
     
     public Pet(Guid id,
         string name,
