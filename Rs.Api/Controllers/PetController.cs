@@ -26,7 +26,9 @@ public class PetController : BaseController
     }
 
     [HttpPost]
-    public async Task<ActionResult<AddPetResponse>> AddPet([FromBody] AddPetCommand command, CancellationToken cancellationToken)
+    public async Task<ActionResult<AddPetResponse>> AddPet(
+        [FromForm] AddPetCommand command,
+        CancellationToken cancellationToken)
     {
         var response = await Mediator.Send(command, cancellationToken);
         return response.ToActionResult();
