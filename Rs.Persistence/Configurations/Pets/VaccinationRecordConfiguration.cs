@@ -12,6 +12,13 @@ public class VaccinationRecordConfiguration : IEntityTypeConfiguration<Vaccinati
             .WithMany(p => p.Vaccinations)
             .HasForeignKey(vr => vr.PetId);
 
+        builder.Property(vr => vr.VaccineName)
+            .IsRequired()
+            .HasMaxLength(100);
+
+        builder.Property(vr => vr.Notes)
+            .HasMaxLength(500);
+
         builder.ToTable("VaccinationRecords", SchemaConfig.Pet);
     }
 }

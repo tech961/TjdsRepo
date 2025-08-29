@@ -12,6 +12,9 @@ public class ActivityRecordConfiguration : IEntityTypeConfiguration<ActivityReco
             .WithMany(p => p.Activities)
             .HasForeignKey(ar => ar.PetId);
 
+        builder.Property(ar => ar.Notes)
+            .HasMaxLength(500);
+
         builder.ToTable("ActivityRecords", SchemaConfig.Pet);
     }
 }
