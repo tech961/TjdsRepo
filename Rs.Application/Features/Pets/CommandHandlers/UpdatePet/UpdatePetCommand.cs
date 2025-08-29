@@ -3,7 +3,6 @@ namespace Rs.Application.Features.Pets.CommandHandlers.UpdatePet;
 using Microsoft.AspNetCore.Http;
 
 public sealed record UpdatePetCommand(
-    Guid Id,
     string Name,
     IFormFile? Photo,
     DateTime? BirthDate,
