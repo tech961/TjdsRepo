@@ -1,15 +1,30 @@
+using System.IO;
 using Rs.Domain.Aggregates.Pets;
 
 namespace Rs.Application.Features.Pets.CommandHandlers.AddPet;
 
-public class AddPetCommandHandler(IDataContext context, IMapper mapper, ILogger<AddPetCommandHandler> logger)
+public class AddPetCommandHandler(
+    IDataContext context,
+    IMapper mapper,
+    ILogger<AddPetCommandHandler> logger,
+    IFileService fileService,
+    FileUploadSettings fileUploadSettings,
+    IUser user)
     : ICommandHandler<AddPetCommand, AddPetResponse>
 {
     public async Task<Result<AddPetResponse>> Handle(AddPetCommand request, CancellationToken cancellationToken)
     {
+        var uploadResult = await fileService.UploadFileAsync(request.Photo,
+            Path.Combine(fileUploadSettings.UploadFolder, "pet"));
+
+        if (uploadResult.IsFailure)
+        {
+            return Result.Failure<AddPetResponse>(uploadResult.Error);
+        }
+
         var pet = new Pet(Guid.NewGuid(),
             request.Name,
-            request.PhotoUrl,
+            uploadResult.Value.PhysicalPath,
             request.BirthDate,
             request.Species,
             request.Breed,
@@ -19,7 +34,7 @@ public class AddPetCommandHandler(IDataContext context, IMapper mapper, ILogger<
             request.VaccinationStatus,
             request.Country,
             request.City,
-            request.OwnerId,
+            user.Id!.Value,
             null!,
             false);
 
