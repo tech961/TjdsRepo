@@ -32,8 +32,6 @@ public class AddPetCommandHandler(
             request.WeightKg,
             request.HealthStatus,
             request.VaccinationStatus,
-            request.Country,
-            request.City,
             user.Id!.Value,
             null!,
             false);

@@ -41,8 +41,6 @@ public class UpdatePetCommandHandler(
         pet.WeightKg = request.WeightKg;
         pet.HealthStatus = request.HealthStatus;
         pet.VaccinationStatus = request.VaccinationStatus;
-        pet.Country = request.Country;
-        pet.City = request.City;
         pet.UpdatedAt = DateTime.UtcNow;
 
         await context.SaveChangesAsync(cancellationToken);

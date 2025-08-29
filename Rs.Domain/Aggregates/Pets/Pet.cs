@@ -20,11 +20,9 @@ public class Pet: BaseAuditableEntity
         string gender,
         double? weightKg,
         string healthStatus,
-        string vaccinationStatus, 
-        string country,
-        string city,
-        Guid ownerId, 
-        User owner, 
+        string vaccinationStatus,
+        Guid ownerId,
+        User owner,
         bool isArchived)
     {
         Id = id;
@@ -37,8 +35,6 @@ public class Pet: BaseAuditableEntity
         WeightKg = weightKg;
         HealthStatus = healthStatus;
         VaccinationStatus = vaccinationStatus;
-        Country = country;
-        City = city;
         OwnerId = ownerId;
         Owner = owner;
         IsArchived = isArchived;
@@ -55,11 +51,8 @@ public class Pet: BaseAuditableEntity
 
     public double? WeightKg { get; set; }   
     public string HealthStatus { get; set; }  
-    public string VaccinationStatus { get; set; } 
-    
-    public string Country { get; set; }
-    public string City { get; set; }
-    
+    public string VaccinationStatus { get; set; }
+
     public Guid OwnerId { get; set; }
 
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;

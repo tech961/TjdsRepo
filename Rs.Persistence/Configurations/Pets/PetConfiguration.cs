@@ -35,12 +35,6 @@ public class PetConfiguration : IEntityTypeConfiguration<Pet>
         builder.Property(p => p.VaccinationStatus)
             .HasMaxLength(100);
 
-        builder.Property(p => p.Country)
-            .HasMaxLength(100);
-
-        builder.Property(p => p.City)
-            .HasMaxLength(100);
-
         builder.ToTable("Pets", SchemaConfig.Pet);
     }
 }

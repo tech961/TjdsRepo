@@ -15,8 +15,6 @@ public sealed class UpdatePetResponse
     public double? WeightKg { get; set; }
     public string HealthStatus { get; set; }
     public string VaccinationStatus { get; set; }
-    public string Country { get; set; }
-    public string City { get; set; }
     public Guid OwnerId { get; set; }
     public bool IsArchived { get; set; }
     public DateTime CreatedAt { get; set; }

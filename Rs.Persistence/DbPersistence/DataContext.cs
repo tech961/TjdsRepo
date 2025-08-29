@@ -3,8 +3,6 @@ using Rs.Domain.Aggregates.Auths;
 using Rs.Domain.Aggregates.Blogs;
 using Rs.Domain.Aggregates.Files;
 using Rs.Domain.Aggregates.Provinces;
-using Rs.Domain.Aggregates.RealEstates;
-using Rs.Domain.Aggregates.Requests;
 using Rs.Domain.Aggregates.Pets;
 using Rs.Domain.Common.Interfaces;
 
@@ -25,12 +23,7 @@ public class DataContext(DbContextOptions<DataContext> options)
 
     public DbSet<Neighborhood> Neighborhoods { get; init; }
 
-    public DbSet<Request> Requests { get; init; }
-    
     public DbSet<FileManager> FileManagers { get; init; }
-
-    public DbSet<RealEstate> RealEstates { get; init; }
-
     public DbSet<Pet> Pets { get; init; }
 
     public override int SaveChanges()

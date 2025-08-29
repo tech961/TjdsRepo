@@ -9,7 +9,5 @@ public sealed record AddPetCommand(
     string Gender,
     double? WeightKg,
     string HealthStatus,
-    string VaccinationStatus,
-    string Country,
-    string City
+    string VaccinationStatus
 ) : ICommand<AddPetResponse>;
