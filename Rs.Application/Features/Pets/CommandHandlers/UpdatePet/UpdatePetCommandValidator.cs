@@ -14,8 +14,5 @@ public class UpdatePetCommandValidator : AbstractValidator<UpdatePetCommand>
         RuleFor(c => c.Species)
             .NotEmpty().WithMessage("Species is required.")
             .MaximumLength(50).WithMessage("Species must not exceed 50 characters.");
-
-        RuleFor(c => c.OwnerId)
-            .NotEmpty().WithMessage("OwnerId is required.");
     }
 }

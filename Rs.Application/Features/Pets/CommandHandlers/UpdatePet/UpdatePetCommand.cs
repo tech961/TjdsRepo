@@ -1,9 +1,11 @@
 namespace Rs.Application.Features.Pets.CommandHandlers.UpdatePet;
 
+using Microsoft.AspNetCore.Http;
+
 public sealed record UpdatePetCommand(
     Guid Id,
     string Name,
-    string PhotoUrl,
+    IFormFile? Photo,
     DateTime? BirthDate,
     string Species,
     string Breed,
@@ -12,6 +14,5 @@ public sealed record UpdatePetCommand(
     string HealthStatus,
     string VaccinationStatus,
     string Country,
-    string City,
-    Guid OwnerId
+    string City
 ) : ICommand<UpdatePetResponse>;
