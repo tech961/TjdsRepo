@@ -10,5 +10,4 @@ global using Rs.Domain.Aggregates.Auths;
 global using Rs.Domain.Common.Interfaces;
 global using Rs.Domain.Options;
 global using Rs.Domain.Shared;
-global using Rs.Domain.Shared.Enums.Requests;
 global using Rs.Utility;
