@@ -2,7 +2,7 @@ namespace Rs.Application.Features.Pets.CommandHandlers.AddPet;
 
 public sealed record AddPetCommand(
     string Name,
-    string PhotoUrl,
+    IFormFile Photo,
     DateTime? BirthDate,
     string Species,
     string Breed,
@@ -11,6 +11,5 @@ public sealed record AddPetCommand(
     string HealthStatus,
     string VaccinationStatus,
     string Country,
-    string City,
-    Guid OwnerId
+    string City
 ) : ICommand<AddPetResponse>;
