@@ -1,8 +1,14 @@
+using System.IO;
 using Rs.Domain.Aggregates.Pets;
 
 namespace Rs.Application.Features.Pets.CommandHandlers.UpdatePet;
 
-public class UpdatePetCommandHandler(IDataContext context, IMapper mapper, ILogger<UpdatePetCommandHandler> logger)
+public class UpdatePetCommandHandler(
+    IDataContext context,
+    IMapper mapper,
+    ILogger<UpdatePetCommandHandler> logger,
+    IFileService fileService,
+    FileUploadSettings fileUploadSettings)
     : ICommandHandler<UpdatePetCommand, UpdatePetResponse>
 {
     public async Task<Result<UpdatePetResponse>> Handle(UpdatePetCommand request, CancellationToken cancellationToken)
@@ -14,7 +20,20 @@ public class UpdatePetCommandHandler(IDataContext context, IMapper mapper, ILogg
         }
 
         pet.Name = request.Name;
-        pet.PhotoUrl = request.PhotoUrl;
+
+        if (request.Photo is not null)
+        {
+            var uploadResult = await fileService.UploadFileAsync(request.Photo,
+                Path.Combine(fileUploadSettings.UploadFolder, "pet"));
+
+            if (uploadResult.IsFailure)
+            {
+                return Result.Failure<UpdatePetResponse>(uploadResult.Error);
+            }
+
+            pet.PhotoUrl = uploadResult.Value.PhysicalPath;
+        }
+
         pet.BirthDate = request.BirthDate;
         pet.Species = request.Species;
         pet.Breed = request.Breed;
@@ -24,7 +43,6 @@ public class UpdatePetCommandHandler(IDataContext context, IMapper mapper, ILogg
         pet.VaccinationStatus = request.VaccinationStatus;
         pet.Country = request.Country;
         pet.City = request.City;
-        pet.OwnerId = request.OwnerId;
         pet.UpdatedAt = DateTime.UtcNow;
 
         await context.SaveChangesAsync(cancellationToken);

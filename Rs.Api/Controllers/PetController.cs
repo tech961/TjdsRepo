@@ -35,7 +35,7 @@ public class PetController : BaseController
     }
 
     [HttpPut("{id:guid}")]
-    public async Task<ActionResult<UpdatePetResponse>> UpdatePet(Guid id, [FromBody] UpdatePetCommand command, CancellationToken cancellationToken)
+    public async Task<ActionResult<UpdatePetResponse>> UpdatePet(Guid id, [FromForm] UpdatePetCommand command, CancellationToken cancellationToken)
     {
         if (id != command.Id)
         {
