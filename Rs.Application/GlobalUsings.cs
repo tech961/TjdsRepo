@@ -11,4 +11,6 @@ global using Rs.Domain.Common.Interfaces;
 global using Rs.Domain.Options;
 global using Rs.Domain.Shared;
 global using Rs.Domain.Shared.Enums.Requests;
+global using Rs.Domain.Shared.Enums.PetShop;
+global using Rs.Domain.Aggregates.PetShop;
 global using Rs.Utility;
