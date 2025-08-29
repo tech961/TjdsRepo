@@ -1,6 +1,6 @@
 ﻿namespace Rs.Domain.Aggregates.Pets;
 
-public abstract class VaccinationRecord
+public class VaccinationRecord
 {
     public VaccinationRecord()
     {
