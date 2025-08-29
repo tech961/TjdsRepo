@@ -8,4 +8,5 @@ public class SchemaConfig
     public const string Request = "Request";
     public const string File = "File";
     public const string RealEstate = "RealEstate";
+    public const string Pet = "Pet";
 }
