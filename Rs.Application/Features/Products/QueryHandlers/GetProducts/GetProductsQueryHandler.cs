@@ -1,3 +1,7 @@
+using AutoMapper.QueryableExtensions;
+using Rs.Application.Common.Mapping;
+using Rs.Application.Common.Models;
+
 namespace Rs.Application.Features.Products.QueryHandlers.GetProducts;
 
 public class GetProductsQueryHandler(IDataContext context, IMapper mapper)

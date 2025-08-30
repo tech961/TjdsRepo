@@ -37,11 +37,6 @@ public class PetController : BaseController
     [HttpPut("{id:guid}")]
     public async Task<ActionResult<UpdatePetResponse>> UpdatePet(Guid id, [FromForm] UpdatePetCommand command, CancellationToken cancellationToken)
     {
-        if (id != command.Id)
-        {
-            return BadRequest();
-        }
-
         var response = await Mediator.Send(command, cancellationToken);
         return response.ToActionResult();
     }
